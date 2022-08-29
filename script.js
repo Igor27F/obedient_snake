@@ -118,38 +118,47 @@ recognition.onresult = (event) => {
       word = words[j];
       console.log(word);
       if (
-        word == "CIMA" ||
-        word == "CYMA" ||
-        word == "ENCIMA" ||
-        word == "ACIMA"
+        word.includes("CIMA") ||
+        word.includes("CYMA") ||
+        word.includes("ENCIMA") ||
+        word.includes("ACIMA")
       ) {
         snake[0].direction = "up";
-      } else if (word == "DIREITA" || word == "DIREITO") {
+      } else if (word.includes("DIREITA") || word.includes("DIREITO")) {
         snake[0].direction = "right";
-      } else if (word == "ESQUERDA" || word == "ESQUERDO") {
+      } else if (word.includes("ESQUERDA") || word.includes("ESQUERDO")) {
         snake[0].direction = "left";
       } else if (
-        word == "BAIXO" ||
-        word == "BAIXA" ||
-        word == "EMBAIXO" ||
-        word == "ABAIXO" ||
-        word == "ABAIXA"
+        word.includes("BAIXO") ||
+        word.includes("BAIXA") ||
+        word.includes("EMBAIXO") ||
+        word.includes("ABAIXO") ||
+        word.includes("ABAIXA")
       ) {
         snake[0].direction = "down";
-      } else if (word == "PARA" || word == "CHEGA" || word == "PAROU") {
-        snake[0].direction = "stop";
       }
-      if (word == "ACELERA" || word == "RAPIDO" || word == "RÁPIDO") {
-        snakeSpeed = 100;
+      // else if (
+      //   word.includes("PARA") ||
+      //   word.includes("CHEGA") ||
+      //   word.includes("PAROU")
+      // ) {
+      //   snake[0].direction = "stop";
+      // }
+      if (
+        word.includes("ACELERA") ||
+        word.includes("RAPIDO") ||
+        word.includes("RÁPIDO")
+      ) {
+        snakeSpeed = snakeSpeed == 100 ? snakeSpeed : snakeSpeed - 200;
       }
       if (
-        word == "DEVAGAR" ||
-        word == "LENTO" ||
-        word == "LENTA" ||
-        word == "DESACELERA" ||
-        word == "CALMA"
+        word.includes("DEVAGAR") ||
+        word.includes("LENTO") ||
+        word.includes("LENTA") ||
+        word.includes("DESACELERA") ||
+        word.includes("CALMA")
       ) {
-        snakeSpeed = 500;
+        snakeSpeed += 200;
       }
     }
   }
